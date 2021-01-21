@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BackendTestniZadatak</name>
+    </assembly>
+    <members>
+        <member name="M:BackendTestniZadatak.Controllers.DevicesController.Get(System.Int32)">
+            <summary>
+            Gets Device by device's Id.
+            </summary>
+            <param name="id"> 
+            The Id of desired device.
+            </param>
+            <returns>
+            One device.
+            </returns>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DevicesController.Create(BackendTestniZadatak.Models.Device)">
+            <summary>
+            Creating new device.
+            </summary>
+            <remarks>
+            Sample request:
+            
+                POST / Device - Creating new (make sure that deviceTypeId you are entering exists)
+                {
+                    "name":"Device 1",
+                    "deviceTypeId":1
+                }
+                
+            </remarks>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DevicesController.Update(BackendTestniZadatak.Models.Device)">
+            <summary>
+            Updating exsisting device.
+            </summary>
+            <remarks>
+            Sample request:
+            
+                PUT / Device - Updating existing
+                {
+                    "id":1,
+                    "name":"Device 342",
+                    "deviceTypeId":1
+                }
+            </remarks>
+            <param name="device"></param>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DevicesController.DeviceSearch(BackendTestniZadatak.Helpers.DeviceSearchModel)">
+            <summary>
+            Search device by name/type/page number.
+            </summary>
+            <param name="search"></param>
+            <returns> List of devices.</returns>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DevicesController.Delete(System.Int32)">
+            <summary>
+            Deleting one device by Id.
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DeviceTypesController.Get(System.Int32)">
+            <summary>
+            Get DeviceType by Id.
+            </summary>
+            <param name="id"></param>
+            <returns>Device type with features.</returns>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DeviceTypesController.GetAll">
+            <summary>
+            Get all device types from db.
+            </summary>
+            <returns>List of all device types.</returns>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DeviceTypesController.CreateOrUpdate(BackendTestniZadatak.Models.DeviceType)">
+             <summary>
+             Create new or update existing device type. Also use this to create or update features.
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST / DeviceType - Creating new
+                 {
+                    "name": "Racunar",
+                    "features":[
+                    {
+                         "name": "Operativni sistem"       
+                    }
+                     ]
+                 }
+                 
+                 PUT / DeviceType - Updating existing (make sure that device type exist in db)
+                 {
+                     "id":1,
+                     "name": "Racunar2",
+                     "features": [
+                          {
+                            "id":1,
+                            "name":"OS"
+                         }
+                     ]
+                 }
+            
+             </remarks>
+             <param name="deviceType"></param>
+        </member>
+        <member name="M:BackendTestniZadatak.Controllers.DeviceTypesController.Delete(System.Int32)">
+            <summary>
+            Delete device type by id which will delete all features that have that type.
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>
