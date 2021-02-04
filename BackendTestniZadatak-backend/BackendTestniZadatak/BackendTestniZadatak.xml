@@ -15,12 +15,6 @@
             One device.
             </returns>
         </member>
-        <member name="M:BackendTestniZadatak.Controllers.DevicesController.GetAll">
-            <summary>
-            Gets all devices from db.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:BackendTestniZadatak.Controllers.DevicesController.Create(BackendTestniZadatak.Models.Device)">
             <summary>
             Creating new device.

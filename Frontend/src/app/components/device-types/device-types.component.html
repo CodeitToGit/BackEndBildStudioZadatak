@@ -1,0 +1,27 @@
+<h2>Device Types</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Parent</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let type of types">
+      <td>{{type.id}}</td>
+      <td>{{type.name}}</td>
+      <td>{{type.parent?.name | ifnull}}</td>
+      <td>
+        <button type="button" class="btn btn-light" [routerLink]="['/devicetypes/' + '/edit/' + type.id]"
+          style="cursor: pointer; color: blue;">Edit</button>
+        <button type="button" class="btn btn-light" (click)="onDelete(type.id)"
+          style="cursor: pointer; color: blue;">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-top: 2px;">
+  <button class="btn btn-primary" routerLink="/devicetypes/new">Add new device type</button>
+</div>

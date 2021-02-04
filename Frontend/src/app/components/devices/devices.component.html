@@ -1,0 +1,50 @@
+<h2>Devices</h2>
+<div>
+<div class="form-group">
+  <label for="name">Device name</label>
+    <input #name="ngModel" name="name" [(ngModel)]="searchModel.name" type="text" class="form-control" >
+  </div>
+
+<div class="form-group">
+  <label for="type">Device type</label>
+  <input type="text" id="type" name="type" class="form-control"  [(ngModel)]="searchModel.type">
+</div>
+
+<button (click)="search()" type="button" class="btn btn-light">
+  Search
+</button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Device Type</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let device of devices">
+      <td>{{device.id}}</td>
+      <td>{{device.name}}</td>
+      <td>{{device.deviceType.name}}</td>
+      <td>
+        <button type="button" class="btn btn-light" [routerLink]="['/devices/' + '/edit/' + device.id]"
+          style="cursor: pointer; color: blue;">Edit</button>
+        <button type="button" class="btn btn-light" (click)="onDelete(device.id)"
+          style="cursor: pointer; color: blue;">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+<button [disabled]="searchModel.pageNumber <= 1" class="btn btn-primary" (click)="goToPage(searchModel.pageNumber - 1)">
+  <</button> {{ searchModel.pageNumber }} <button  class="btn btn-primary" [disabled]="searchModel.numberOfDevicesPerPage > devices.length"
+    (click)="goToPage(searchModel.pageNumber + 1)">>
+</button>
+<div style="margin-top: 2px;">
+  <button  class="btn btn-primary" routerLink="/devices/new">Add new device</button>
+
+</div>

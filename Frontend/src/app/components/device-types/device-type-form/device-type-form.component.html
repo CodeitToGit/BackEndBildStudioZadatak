@@ -1,0 +1,27 @@
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="">Name</label>
+    <input #name="ngModel" name="name" [(ngModel)]="deviceType.name" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors.required">Name is required.</div>
+    </div>
+  </div>
+  <h3>Features</h3>
+
+  <div class="form-group">
+    <input type="text" name="feature" [(ngModel)]="newFeature" />
+    <ul>
+      <li *ngFor="let feature of deviceType.features; let i = index">{{ feature.name }}
+        <button class="btn btn-dark" style="margin-top: 2px;" (click)="removeFeature(i)">X</button></li>
+    </ul>
+    <button class="btn btn-primary" (click)="addFeature()">Add Feature</button>
+  </div>
+
+  <div class="form-group">
+    <select name="parent" [(ngModel)]="deviceType.parentId">
+      <option *ngFor="let type of deviceTypes" [value]="type.id">{{ type.name }}</option>
+    </select>
+  </div>
+
+  <button [disabled]="!f.valid" (click)="createDeviceType()" class="btn btn-primary">Save</button>
+</form>

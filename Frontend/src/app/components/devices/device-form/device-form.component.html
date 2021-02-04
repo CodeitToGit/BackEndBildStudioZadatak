@@ -1,0 +1,15 @@
+<form #f="ngForm">
+  <div class="form-group">
+    <label for="">Name</label>
+    <input #name="ngModel" name="name" [(ngModel)]="device.name" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors.required">Name is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <select name="type" [(ngModel)]="device.deviceTypeId">
+      <option *ngFor="let type of deviceTypes" [value]="type.id">{{ type.name }}</option>
+    </select>
+  </div>
+  <button [disabled]="!f.valid" (click)="createDevice()" class="btn btn-primary">Save</button>
+</form>
